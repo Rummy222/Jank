@@ -1,4 +1,21 @@
 /*
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+0-120   Object that holds Pizza toppings
+        Capitalize function
+        Get Adj and GetNoun function
+        Define Vars for adjectives and Nouns
+        Functions for Generating random names for pizzas
+        These functions return a string of a random ingredient from each respective category of ingredients.
+        Returns a string with random pizza ingredients nested inside <li> tags
+        returns a DOM element for each pizza
+416     resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
+439     Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
+467     Iterates through pizza elements on the page and changes their widths
+486     User Timing API
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
 
@@ -446,7 +463,8 @@ var resizePizzas = function(size) {
 
     return dx;
   }
-
+//>>>>>>>>>>>>>>>>>>>>>>>>  This is the OLD code  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/*
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
@@ -455,7 +473,19 @@ var resizePizzas = function(size) {
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
     }
   }
+*/
+//>>>>>>>>>>>>>>>>>>>>>>>>  This is the NEW code  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+var dx = determineDx(document.querySelectorAll(".randomPizzaContainer"), size);
+var newwidth = (document.querySelectorAll(".randomPizzaContainer").offsetWidth + dx) + 'px';
+  // Iterates through pizza elements on the page and changes their widths
+  function changePizzaSizes(size) {
+    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    }
+  }
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   changePizzaSizes(size);
 
   // User Timing API is awesome
@@ -506,9 +536,10 @@ function updatePositions() {
     // document.body.scrollTop is no longer supported in Chrome.
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
+
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
-
+  //  console.log(phase);
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -538,3 +569,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   updatePositions();
 });
+
+//>>>>>>>>>> From Lesson 8 Quiz 7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+function getDomNodeArray(selector) {
+  // get the elements as a DOM collection
+  var elemCollection = document.querySelectorAll(selector);
+
+  // coerce the DOM collection into an array
+  var elemArray = Array.prototype.slice.apply(elemCollection);
+
+  return elemArray;
+};
+
+var divs = getDomNodeArray('div');
+console.log("The Div's Array looks like this  -->  ", divs);
+//>>>>>>>>>> >>>>>>>>>>>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
