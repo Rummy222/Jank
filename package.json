@@ -5,10 +5,14 @@
   "main": "\u001b[D\u001b[D\u001b[D\u001bmain\u001b[\u001b[C\u001b[C\u001b[C\u001b.js)",
   "dependencies": {
     "gulp-uglify": "^3.0.0",
-    "gulp": "^3.9.1",
-    "ngrok": "^2.2.25"
+    "gulp": "^3.9.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-exit": "0.0.2",
+    "ngrok": "^2.2.25",
+    "psi": "^3.1.0",
+    "run-sequence": "^2.2.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
