@@ -1,0 +1,25 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio-master",
+  "version": "1.0.0",
+  "description": "udacity project #6",
+  "main": "\u001b[D\u001b[D\u001b[D\u001bmain\u001b[\u001b[C\u001b[C\u001b[C\u001b.js)",
+  "dependencies": {
+    "gulp-uglify": "^3.0.0",
+    "gulp": "^3.9.1",
+    "ngrok": "^2.2.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rummy222/Jank.git"
+  },
+  "author": "David Rohm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rummy222/Jank/issues"
+  },
+  "homepage": "https://github.com/Rummy222/Jank#readme"
+}
