@@ -586,7 +586,7 @@ function getDomNodeArray(selector) {
   var elemArray = Array.prototype.slice.apply(elemCollection);
 
   return elemArray;
-};
+}
 
 var divs = getDomNodeArray('div');
 console.log("The Div's Array looks like this  -->  ", divs);
