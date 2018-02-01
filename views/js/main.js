@@ -482,13 +482,13 @@ var resizePizzas = function(size) {
   }
 */
 //>>>>>>>>>>>>>>>>>>>>>>>>  This is the NEW code  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-var dx = determineDx(document.getElementsByClassName(".randomPizzaContainer"), size);
-var newwidth = (document.getElementsByClassName(".randomPizzaContainer").offsetWidth + dx) + 'px';
+var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+var dx = determineDx(randomPizzas, size);
+var newwidth = (randomPizzas.offsetWidth + dx) + 'px';
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.getElementsByClassName(".randomPizzaContainer").length; i++) {
-      document.getElementsByClassName(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < randomPizzas.length; i++) {
+      randomPizzas[i].style.width = newwidth;
     }
   }
 
@@ -505,8 +505,8 @@ var newwidth = (document.getElementsByClassName(".randomPizzaContainer").offsetW
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
+for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -539,9 +539,9 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 //var lengthOfItem = items.length;
   var items = document.getElementsByClassName('mover');
+  // document.body.scrollTop is no longer supported in Chrome.
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {
-    // document.body.scrollTop is no longer supported in Chrome.
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
 
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
@@ -564,7 +564,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+//  var iHeight = window.screen.height * cols;
+  for (var i = 0; i < 48; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -575,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
-});
+})
 
 //>>>>>>>>>> From Lesson 8 Quiz 7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function getDomNodeArray(selector) {
