@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
-})
+});
 
 //>>>>>>>>>> From Lesson 8 Quiz 7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function getDomNodeArray(selector) {
